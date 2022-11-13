@@ -1,15 +1,4 @@
-#[no_mangle]
-pub extern "C" fn add(left: usize, right: usize) -> usize {
-	left + right
-}
+use add::add;
 
-#[cfg(test)]
-mod tests {
-	use super::*;
-
-	#[test]
-	fn it_works() {
-		let result = add(2, 2);
-		assert_eq!(result, 4);
-	}
-}
+mod add;
+mod web;

@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 	<title>WebAssembly with Rust</title>
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<script src="functions.js"></script>
 </head>
 
 <body>
@@ -13,10 +12,12 @@
 	<h1>WebAssembly with Rust!</h1>
 </div>
 
-<script>
-    instantiate_wasm("rs.wasm").then(function (instance) {
-        const result = instance.exports.add(1, 2);
-        alert("Result is " + result);
+<script type="module">
+    import init, {alert_add_result} from "./pkg/wasm_rs.js";
+
+    init().then(instance => {
+        alert_add_result(1, 2);
+        instance.alert_add_result(3, 4);
     });
 </script>
 </body>
